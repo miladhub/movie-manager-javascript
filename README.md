@@ -3,6 +3,7 @@ Example of remote EJB invocation between JBoss 7 instances.
 *Mini-How-To*
 
 1. Unzip JBoss into MASTER and SLAVE instances and build movie-manager:
+
     milad@linux-pc-0018:~$ cd zips
     milad@linux-pc-0018:~/zips$ unzip jboss-eap-6.1.0.Alpha.zip
     ...
@@ -30,6 +31,7 @@ Example of remote EJB invocation between JBoss 7 instances.
     milad@linux-pc-0018:~/projects/movie-manager/movie-manager-dist/target$ cp standalone-full-slave.xml ~/jboss-eap-6.1-slave/standalone/configuration/
 
 2. Add the "ejb" application user to the SLAVE instance and start it up:
+
     milad@linux-pc-0018:~/jboss-eap-6.1-slave$ export JBOSS_HOME=/home/local/SPSSIT/milad/jboss-eap-6.1-slave
     milad@linux-pc-0018:~/jboss-eap-6.1-slave$ bin/add-user.sh
 
@@ -56,6 +58,7 @@ Example of remote EJB invocation between JBoss 7 instances.
     milad@linux-pc-0018:~/jboss-eap-6.1-slave$ bin/standalone.sh -server-config=standalone-full-slave.xml -Djboss.socket.binding.port-offset=100 -Djboss.node.name=slave
 
 3. Start up MASTER:
+
     milad@linux-pc-0018:~/jboss-eap-6.1$ export JBOSS_HOME=/home/local/SPSSIT/milad/jboss-eap-6.1
     milad@linux-pc-0018:~/jboss-eap-6.1$ bin/standalone.sh -server-config=standalone-full-master.xml -Djboss.node.name=master
 
