@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Movie Manager - Welcome</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</h:head>
+
+<h:body>
+	<h:form id="searchForm">
+		<h:outputText id="searchOutput" value="Enter the movie title"
+			style="font-family: Arial, sans-serif; font-size: 24; color: green;" />
+		<p>
+			<h:message id="errors" for="searchInput" style="color: red" />
+		</p>
+		<p>
+			<h:outputLabel for="searchInput">
+				<h:outputText id="searchInputLabel" value="Movie title" />
+			</h:outputLabel>
+			<h:inputText id="searchInput" value="#{movieBean.title}"
+				required="true">
+				<f:validateLength minimum="1" maximum="100" />
+			</h:inputText>
+		</p>
+		<p>
+			<h:outputText id="movieResult" value="Details: #{movieBean.result}" />
+		</p>
+		<p>
+			<h:outputText id="movieDetails"
+				value="Result: #{movieBean.author}, '#{movieBean.title}' (#{movieBean.year})" />
+		</p>
+
+		<h:commandButton id="searchCommand" type="submit" value="Search"
+			actionListener="#{movieBean.search}" />
+		<h:commandButton id="goodbyeCommand" type="submit" value="Goodbye"
+			action="goodbye" immediate="true" />
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,6 @@
+Comportamento
+
+    Descrizione del comportamento del sistema, conseguentemente alle scelte prese
+    e limitatamente ai requisiti e all'architettura logica.
+    
+    Tipicamente il comportamento è descritto attraverso <system sequence diagrams UML>.

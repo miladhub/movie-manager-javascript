@@ -1,0 +1,11 @@
+Analisi del testo
+
+    Qui si analizzano i requisiti da un punto di vista sintattico e
+    grammaticale al fine di delineare i concetti e le entità che
+    faranno parte del dominio.
+    
+    In particolare si distinguono:
+    
+        * Entità (nomi)
+        
+        * Azioni (verbi)

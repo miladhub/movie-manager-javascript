@@ -1,0 +1,13 @@
+Conclusioni
+
+    Conclusioni, obiettivi raggiunti, road-map e limitazioni.
+    
+* Road map (a.k.a To-do list)
+
+    * Usare settings invece di environment variables
+    
+    * Sviluppare la view
+    
+        * Usare JSF
+    
+    * Sviluppare integration test    
