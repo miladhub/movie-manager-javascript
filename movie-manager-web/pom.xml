@@ -15,29 +15,21 @@
     <dependencies>
 		<dependency>
 			<groupId>org.sample.movie-manager</groupId>
+			<artifactId>movie-manager-resources</artifactId>
+			<type>jar</type>
+	        <version>${project.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.sample.movie-manager</groupId>
 			<artifactId>movie-manager-ejb</artifactId>
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
-		<!-- e.g., @Stateless
-        <dependency>
-            <groupId>javax.ejb</groupId>
-            <artifactId>ejb-api</artifactId>
-            <version>3.0</version>
-			<scope>provided</scope>
-        </dependency> -->
         <dependency>
             <groupId>org.jboss.spec.javax.ejb</groupId>
             <artifactId>jboss-ejb-api_3.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
-        <!-- e.g., EntityManager
-    	<dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0</version>
-			<scope>provided</scope>
-        </dependency> -->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>

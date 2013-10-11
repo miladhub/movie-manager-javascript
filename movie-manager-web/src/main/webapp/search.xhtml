@@ -11,8 +11,10 @@
 
 <h:body>
 	<h:form id="searchForm">
+		<h:outputStylesheet library="fonts" name="movie-fonts.css" />
+
 		<h:outputText id="searchOutput" value="Enter the movie title"
-			style="font-family: Arial, sans-serif; font-size: 24; color: green;" />
+			style="font-family: movie_sans; font-size: 24; color: green;" />
 		<p>
 			<h:message id="errors" for="searchInput" style="color: red" />
 		</p>
