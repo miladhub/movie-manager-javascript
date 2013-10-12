@@ -2,6 +2,8 @@ package movie.j2ee.ejb.session;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
+import javax.enterprise.event.Event;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -17,6 +19,9 @@ public class MovieManagerSessionBean implements LocalMovieManager, RemoteMovieMa
 	private EntityManager em;
 	private IMovieDAO movieDao;
 	
+	@Inject
+    private Event<MovieEvent> movieEvent;
+	
 	@PostConstruct
 	public void init() {
 		movieDao = new MovieDAO(em);
@@ -24,6 +29,7 @@ public class MovieManagerSessionBean implements LocalMovieManager, RemoteMovieMa
 
 	@Override
 	public Movie findByTitle(String title) {
+		movieEvent.fire(new MovieEvent(title));
 		return movieDao.findByTitle(title);
 	}
 }

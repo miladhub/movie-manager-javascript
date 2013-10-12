@@ -1,16 +1,13 @@
 package movie;
 
-import java.util.Hashtable;
-
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
-import javax.naming.Context;
+import javax.inject.Inject;
 import javax.naming.NamingException;
 
 import movie.j2ee.ejb.entity.Movie;
 import movie.j2ee.interfaces.IMovieManager;
-import movie.j2ee.interfaces.RemoteMovieManager;
 
 @ManagedBean(name = "movieBean")
 @RequestScoped
@@ -22,9 +19,10 @@ public class MovieBean {
 	private String category;
 	private String language;
 
+	@Inject
+	private IMovieManager movieManager;
+	
 	public void search(ActionEvent actionEvent) throws NamingException {
-		IMovieManager movieManager = lookup();
-
 		Movie movie = movieManager.findByTitle(getTitle());
 
 		if (movie != null) {
@@ -38,29 +36,7 @@ public class MovieBean {
 			this.result = "not found.";
 		}
 	}
-
-	private RemoteMovieManager lookup() {
-		final Hashtable<String, Object> props = new Hashtable<String, Object>();
-        props.put(Context.URL_PKG_PREFIXES, "org.jboss.ejb.client.naming");
-        Context context = null;
-		try {
-			context = new javax.naming.InitialContext(props);
-			return (RemoteMovieManager) context.lookup("ejb:" + "slave" + "/" + "movie-manager-ejb-1.0.0-SNAPSHOT" + "/" + "" + "/" +
-					"MovieManagerSessionBean" + "!" + "movie.j2ee.interfaces.RemoteMovieManager");
-		} catch (NamingException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (context != null) {
-					context.close();
-				}
-			} catch (NamingException e) {
-				e.printStackTrace();
-			}
-		}
-		return null;
-	}
-
+	
 	public String getResult() {
 		return result;
 	}

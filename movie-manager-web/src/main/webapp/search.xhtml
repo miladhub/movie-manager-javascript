@@ -2,7 +2,8 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Movie Manager - Welcome</title>
@@ -11,8 +12,12 @@
 
 <h:body>
 	<h:form id="searchForm">
+		<p:growl id="growler" showDetail="true" />
+		<p:poll interval="3" listener="#{eventsListener.update}" update="growler"
+			rendered="#{not empty eventsListener.last}" />
+		
 		<h:outputStylesheet library="fonts" name="movie-fonts.css" />
-
+		
 		<h:outputText id="searchOutput" value="Enter the movie title"
 			style="font-family: movie_sans; font-size: 24; color: green;" />
 		<p>
