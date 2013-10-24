@@ -1,67 +1,53 @@
 package movie;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.annotation.PostConstruct;
+import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
-import javax.naming.NamingException;
+import javax.inject.Named;
 
-import movie.j2ee.ejb.entity.Movie;
-import movie.j2ee.interfaces.IMovieManager;
+import movie.j2ee.interfaces.MovieFinder;
 
-@ManagedBean(name = "movieBean")
+@Named
 @RequestScoped
-public class MovieBean {
-	private String result;
-	private String title;
-	private String author;
-	private Integer year;
-	private String category;
-	private String language;
-
+public class MovieBean implements MovieView {
 	@Inject
-	private IMovieManager movieManager;
+	private MovieFinder movieManager;
+	private String matches, searchCriteria;
+	private MoviePresenter presenter;
 	
-	public void search(ActionEvent actionEvent) throws NamingException {
-		Movie movie = movieManager.findByTitle(getTitle());
-
-		if (movie != null) {
-			this.result = "found.";
-	        this.title = movie.getTitle();
-	        this.year = movie.getYear();
-	        this.author = movie.getAuthor().getName();
-	        this.category = movie.getCategory().getName();
-	        this.language = movie.getLanguage();
-		} else {
-			this.result = "not found.";
-		}
+	@PostConstruct
+	public void createPresenter() {
+		presenter = new MoviePresenter(this, movieManager);
 	}
 	
-	public String getResult() {
-		return result;
+	public void search(ActionEvent actionEvent) {
+		presenter.search(searchCriteria);
+	}
+	
+	public String getSearchCriteria() {
+		return searchCriteria;
 	}
 
-    public String getTitle() {
-        return title;
-    }
+	public void setSearchCriteria(String searchCriteria) {
+		this.searchCriteria = searchCriteria;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	@Override
+	public String getMatches() {
+		return matches;
+	}
+	
+	@Override
+	public void setMatches(String matches) {
+		this.matches = matches;
+	}
 
-    public String getAuthor() {
-        return author;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public String getLanguage() {
-        return language;
-    }
+	@Override
+	public void notifyNotFound() {
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not found!", "You looked for: " + searchCriteria));
+	}
 }
