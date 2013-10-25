@@ -2,6 +2,7 @@ package movie;
 
 public interface MovieView {
 	String getMatches();
-	void setMatches(String matches);
-	void notifyNotFound();
+	void matchesFound(String matches);
+	void noMatchesFound();
+	boolean isMatchesShown();
 }

@@ -41,12 +41,17 @@ public class MovieBean implements MovieView {
 	}
 	
 	@Override
-	public void setMatches(String matches) {
+	public void matchesFound(String matches) {
 		this.matches = matches;
+	}
+	
+	@Override
+	public boolean isMatchesShown() {
+		return presenter.shouldShowMatches();
 	}
 
 	@Override
-	public void notifyNotFound() {
+	public void noMatchesFound() {
 		FacesContext.getCurrentInstance().addMessage(null,
 				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not found!", "You looked for: " + searchCriteria));
 	}

@@ -16,14 +16,10 @@
 		
 		<h:outputStylesheet library="fonts" name="movie-fonts.css" />
 		
-		<h:outputText id="searchOutput" value="Enter the movie title"
-			style="font-family: movie_sans; font-size: 24; color: green;" />
-		<p>
-			<h:message id="errors" for="searchInput" style="color: red" />
-		</p>
 		<p>
 			<h:outputLabel for="searchInput">
-				<h:outputText id="searchInputLabel" value="Movie search criteria" />
+				<h:outputText id="searchInputLabel" value="Movie search criteria"
+					style="font-family: movie_sans; font-size: 24; color: green;" />
 			</h:outputLabel>
 			<h:inputText id="searchInput" value="#{movieBean.searchCriteria}"
 				required="true">
@@ -31,7 +27,10 @@
 			</h:inputText>
 		</p>
 		<p>
-			<h:outputText id="movieDetails"	value="Matches: #{movieBean.matches}" />
+			<h:message id="errors" for="searchInput" style="color: red" />
+		</p>
+		<p>
+			<h:outputText id="movieDetails"	value="Matches: #{movieBean.matches}" rendered="#{movieBean.matchesShown}" />
 		</p>
 
 		<h:commandButton id="searchCommand" type="submit" value="Search"

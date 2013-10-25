@@ -6,6 +6,7 @@ import movie.j2ee.interfaces.MovieFinder;
 public class MoviePresenter {
 	private final MovieView view;
 	private final MovieFinder model;
+	private boolean shouldShowMatches;
 
 	public MoviePresenter(MovieView view, MovieFinder model) {
 		this.view = view;
@@ -15,9 +16,14 @@ public class MoviePresenter {
 	public void search(String searchCriteria) {
 		Movie movie = model.findByTitle(searchCriteria);
 		if (movie != null) {
-			view.setMatches(movie.getAuthor().getName() + ", '" + movie.getTitle() + "' (" + movie.getYear() + ")");
+			view.matchesFound(movie.getAuthor().getName() + ", '" + movie.getTitle() + "' (" + movie.getYear() + ")");
+			this.shouldShowMatches = true;
 		} else {
-			view.notifyNotFound();
+			view.noMatchesFound();
 		}
+	}
+
+	public boolean shouldShowMatches() {
+		return shouldShowMatches;
 	}
 }
