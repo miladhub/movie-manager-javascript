@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 import movie.j2ee.ejb.entity.Movie;
-import movie.j2ee.interfaces.MovieFinder;
+import movie.j2ee.interfaces.MovieRepository;
 
-public class StubModel implements MovieFinder {
-	private Map<String, Movie> movies = new HashMap<String, Movie>();
+public class StubModel implements MovieRepository {
+	private Map<String, Movie> moviesByTitle = new HashMap<String, Movie>();
 	
 	public void add(Movie movie) {
-		movies.put("my movie", movie);
+		moviesByTitle.put(movie.getTitle(), movie);
 	}
 
 	@Override
 	public Movie findByTitle(String title) {
-		return movies.get(title);
+		return moviesByTitle.get(title);
 	}
 }

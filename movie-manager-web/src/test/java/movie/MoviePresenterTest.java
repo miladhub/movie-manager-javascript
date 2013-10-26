@@ -10,10 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class MoviePresenterTest {
-	private MovieView view = mock(MovieView.class);
-	private StubModel model = new StubModel();
-	
-	private MoviePresenter presenter = new MoviePresenter(view, model);
+	private final MovieView view = mock(MovieView.class);
+	private final StubModel model = new StubModel();
+	private final MoviePresenter presenter = new MoviePresenter(view, model);
 
 	@Before
 	public void addFakeMovie() {
@@ -33,13 +32,13 @@ public class MoviePresenterTest {
 	
 	@Test
 	public void searchShouldDisplayMatches() throws Exception {
-		presenter.search("my movie");
+		presenter.search("My Movie");
 		verify(view).matchesFound("PKDick, 'My Movie' (2010)");
 	}
 	
 	@Test
 	public void matchesAppearWhenSomethingIsFound() throws Exception {
-		presenter.search("my movie");
+		presenter.search("My Movie");
 		assertTrue(presenter.shouldShowMatches());
 	}
 	

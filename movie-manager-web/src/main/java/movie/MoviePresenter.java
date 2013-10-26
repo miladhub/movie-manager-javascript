@@ -1,14 +1,14 @@
 package movie;
 
 import movie.j2ee.ejb.entity.Movie;
-import movie.j2ee.interfaces.MovieFinder;
+import movie.j2ee.interfaces.MovieRepository;
 
 public class MoviePresenter {
 	private final MovieView view;
-	private final MovieFinder model;
+	private final MovieRepository model;
 	private boolean shouldShowMatches;
 
-	public MoviePresenter(MovieView view, MovieFinder model) {
+	public MoviePresenter(MovieView view, MovieRepository model) {
 		this.view = view;
 		this.model = model;
 	}
