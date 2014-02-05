@@ -3,27 +3,32 @@ package movie;
 import movie.j2ee.ejb.entity.Movie;
 import movie.j2ee.interfaces.MovieRepository;
 
-public class MoviePresenter {
+public class MoviePresenter implements FindMovieResponder {
 	private final MovieView view;
-	private final MovieRepository model;
+	private final FindMovies interactor;
 	private boolean shouldShowMatches;
 
-	public MoviePresenter(MovieView view, MovieRepository model) {
+	public MoviePresenter(MovieView view, MovieRepository repository) {
 		this.view = view;
-		this.model = model;
+		this.interactor = new FindMovies(this, repository);
 	}
 
 	public void search(String searchCriteria) {
-		Movie movie = model.findByTitle(searchCriteria);
-		if (movie != null) {
-			view.matchesFound(movie.getAuthor().getName() + ", '" + movie.getTitle() + "' (" + movie.getYear() + ")");
-			this.shouldShowMatches = true;
-		} else {
-			view.noMatchesFound();
-		}
+		interactor.search(searchCriteria);
 	}
 
 	public boolean shouldShowMatches() {
 		return shouldShowMatches;
+	}
+
+	@Override
+	public void matchesFound(Movie movie) {
+		view.displayMatches(movie.getAuthor().getName() + ", '" + movie.getTitle() + "' (" + movie.getYear() + ")");
+		this.shouldShowMatches = true;
+	}
+
+	@Override
+	public void noMatchesFoundForCriteria(String searchCriteria) {
+		view.displayErrorMessage("Not found, sorry!", "You looked for: " + searchCriteria);
 	}
 }

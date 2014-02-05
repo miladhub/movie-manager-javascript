@@ -28,14 +28,14 @@ public class MovieBean implements MovieView {
 	}
 	
 	@Override
-	public void matchesFound(String matches) {
+	public void displayMatches(String matches) {
 		this.matches = matches;
 	}
 	
 	@Override
-	public void noMatchesFound() {
+	public void displayErrorMessage(String error, String detail) {
 		FacesContext.getCurrentInstance().addMessage(null,
-				new FacesMessage(FacesMessage.SEVERITY_ERROR, "Not found!", "You looked for: " + searchCriteria));
+				new FacesMessage(FacesMessage.SEVERITY_ERROR, error, detail));
 	}
 	
 	public String getSearchCriteria() {

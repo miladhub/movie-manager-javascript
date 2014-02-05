@@ -1,6 +1,6 @@
 package movie;
 
 public interface MovieView {
-	void matchesFound(String matches);
-	void noMatchesFound();
+	void displayMatches(String matches);
+	void displayErrorMessage(String error, String detail);
 }

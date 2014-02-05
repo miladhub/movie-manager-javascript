@@ -33,7 +33,7 @@ public class MoviePresenterTest {
 	@Test
 	public void searchShouldDisplayMatches() throws Exception {
 		presenter.search("My Movie");
-		verify(view).matchesFound("PKDick, 'My Movie' (2010)");
+		verify(view).displayMatches("PKDick, 'My Movie' (2010)");
 	}
 	
 	@Test
@@ -45,6 +45,6 @@ public class MoviePresenterTest {
 	@Test
 	public void userIsNotifiedWhenNothingIsFound() throws Exception {
 		presenter.search("my other movie");
-		verify(view).noMatchesFound();
+		verify(view).displayErrorMessage("Not found, sorry!", "You looked for: my other movie");
 	}
 }
