@@ -3,12 +3,14 @@ package movie.j2ee.ejb.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="authors")
+@XmlRootElement
 public class Author implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     private Long id;
     private String name;
 

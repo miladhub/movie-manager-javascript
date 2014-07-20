@@ -18,10 +18,12 @@ public class EventsListener implements Serializable {
 
 	public void onFinderCalled(@Observes MovieEvent event) {
 		this.last = event.getTitle();
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Finder has been called on movie " +
-        		event.getTitle(), event.getTitle()));
+		if (FacesContext.getCurrentInstance() != null) {
+	        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Finder has been called on movie " +
+	        		event.getTitle(), event.getTitle()));
+		}
     }
-	
+
 	public void update() {
 		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Last movie was " +
         		last, last));

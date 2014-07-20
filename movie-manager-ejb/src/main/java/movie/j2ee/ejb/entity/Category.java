@@ -3,15 +3,17 @@ package movie.j2ee.ejb.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="categories")
+@XmlRootElement
 public class Category implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
-    
+
     private Long id;
     private String name;
-    
+
     @Id
     public Long getId() {
         return id;

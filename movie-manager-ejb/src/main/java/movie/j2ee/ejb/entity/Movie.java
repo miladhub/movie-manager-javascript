@@ -8,25 +8,27 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name="movies")
 @NamedQueries({
     @NamedQuery(
             name="movie-findByTitle",
-            query="select mv from Movie mv where mv.title = :title"        
+            query="select mv from Movie mv where mv.title = :title"
     )
 })
+@XmlRootElement
 public class Movie implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
-    
+
 	private Long id;
 	private String title;
 	private Integer year;
 	private String language;
 	private Author author;
 	private Category category;
-		
+
 	@Id
     public Long getId() {
         return id;
@@ -55,7 +57,7 @@ public class Movie implements java.io.Serializable {
     public Category getCategory() {
         return category;
     }
-    
+
     public void setId(Long id) {
 		this.id = id;
 	}
