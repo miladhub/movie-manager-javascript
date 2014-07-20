@@ -4,7 +4,6 @@ import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.faces.event.ActionEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -23,8 +22,14 @@ public class MovieBean implements MovieView {
 		presenter = new MoviePresenter(this, model);
 	}
 	
-	public void search(ActionEvent actionEvent) {
+	public void search() {
 		presenter.search(searchCriteria);
+	}
+	
+	public void validate() {
+		if (searchCriteria == null || searchCriteria.length() < 3) {
+			displayErrorMessage("Too short man", "Minimum: 3");
+		}
 	}
 	
 	@Override

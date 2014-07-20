@@ -13,17 +13,16 @@
 <h:body>
 	<h:form id="searchForm">
 		<p:growl id="growler" showDetail="true" />
-		
+
 		<h:outputStylesheet library="fonts" name="movie-fonts.css" />
-		
+
 		<p>
 			<h:outputLabel for="searchInput">
 				<h:outputText id="searchInputLabel" value="Movie search criteria"
 					style="font-family: movie_sans; font-size: 24; color: green;" />
 			</h:outputLabel>
-			<h:inputText id="searchInput" value="#{movieBean.searchCriteria}"
-				required="true">
-				<f:validateLength minimum="1" maximum="100" />
+			<h:inputText id="searchInput" value="#{movieBean.searchCriteria}" required="true">
+				<p:ajax update="growler" event="keyup" listener="#{movieBean.validate}" />
 			</h:inputText>
 		</p>
 		<p>
