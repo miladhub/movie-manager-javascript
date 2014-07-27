@@ -1,4 +1,4 @@
-package movie.j2ee.ejb.entity;
+package movie;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

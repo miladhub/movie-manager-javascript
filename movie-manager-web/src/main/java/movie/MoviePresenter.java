@@ -1,7 +1,5 @@
 package movie;
 
-import movie.j2ee.ejb.entity.Movie;
-import movie.j2ee.interfaces.MovieRepository;
 
 public class MoviePresenter implements FindMovieResponder {
 	private final MovieView view;

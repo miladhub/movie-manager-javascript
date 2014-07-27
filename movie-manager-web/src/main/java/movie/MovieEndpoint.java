@@ -10,8 +10,6 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 
-import movie.j2ee.interfaces.MovieRepository;
-
 @ServerEndpoint("/ws")
 public class MovieEndpoint implements MovieView {
 	@Inject

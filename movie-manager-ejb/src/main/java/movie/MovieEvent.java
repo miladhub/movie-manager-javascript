@@ -1,4 +1,4 @@
-package movie.j2ee.ejb.session;
+package movie;
 
 public class MovieEvent {
 	private String title;

@@ -6,9 +6,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import movie.j2ee.ejb.entity.Movie;
-import movie.j2ee.interfaces.MovieRepository;
 @Path("/movies")
 public class MovieResource {
 	@Inject
