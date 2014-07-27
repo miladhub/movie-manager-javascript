@@ -17,6 +17,9 @@
 	<script src="js/backbone/websocket.js"></script>
 	<script src="js/backbone/rest.js"></script>
 
-	<script src="js/backbone/main.js"></script>
+	<script type="text/javascript">
+		// var app = new App(new RestInteractor());
+		var app = new App(new WebsocketInteractor());
+	</script>
 </body>
 </html>

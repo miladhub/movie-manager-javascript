@@ -1,6 +1,5 @@
 package movie;
 
-
 public class MoviePresenter implements FindMovieResponder {
 	private final MovieView view;
 	private final FindMovies interactor;

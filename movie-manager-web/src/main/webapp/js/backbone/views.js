@@ -1,5 +1,4 @@
 var SearchView = Backbone.View.extend({
-	el : $('#container'),
 	template : _.template(
 		"<label>Query:</label>\
 		<input id='searchQuery' type='text' />\
