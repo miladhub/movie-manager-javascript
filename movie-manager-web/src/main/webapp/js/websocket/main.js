@@ -1,6 +1,4 @@
-// var rootUrl = document.URL + "rest/movies/";
-
-var ws = new WebSocket("ws://" + location.hostname + ':' + location.port + location.pathname + "/ws", ['soap', 'xmpp']);
+var ws = new WebSocket("ws://" + location.hostname + ":" + location.port + "/movie/ws", ['soap', 'xmpp']);
 
 ws.onmessage = function (e) {
   console.log('from server: ' + e.data);
@@ -36,16 +34,4 @@ $('#searchQuery').keypress(function(e){
 function search(searchQuery) {
 	console.log('query: ' + searchQuery);
 	ws.send(searchQuery);
-//	$.ajax({
-//		type: 'GET',
-//		url: rootUrl + "search/" + searchQuery,
-//		dataType: "json",
-//		success: function(movie) {
-//			if (movie) {
-//				$('#searchResults').val(movie.title);
-//			} else {
-//				alert("No such movie.");
-//			}
-//		}
-//	});
 }
