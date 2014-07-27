@@ -17,6 +17,6 @@ var SearchView = Backbone.View.extend({
       this.appSearch(event);
 	},
 	appSearch: function( event ){
-    	app.search($("#searchQuery").val());
+		app.search($("#searchQuery").val());
 	}
 });
