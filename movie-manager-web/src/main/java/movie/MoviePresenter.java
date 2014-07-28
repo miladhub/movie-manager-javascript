@@ -20,7 +20,7 @@ public class MoviePresenter implements FindMovieResponder {
 
 	@Override
 	public void matchesFound(Movie movie) {
-		view.displayMatches(movie.getAuthor().getName() + ", '" + movie.getTitle() + "' (" + movie.getYear() + ")");
+		view.displayMatches(movie.getAuthor() + ", '" + movie.getTitle() + "' (" + movie.getYear() + ")");
 		this.shouldShowMatches = true;
 	}
 

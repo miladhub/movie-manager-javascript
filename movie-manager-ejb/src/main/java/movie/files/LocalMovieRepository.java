@@ -1,4 +1,4 @@
-package movie.ejb;
+package movie.files;
 
 import javax.ejb.Local;
 

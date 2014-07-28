@@ -1,38 +1,16 @@
 package movie;
 
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Entity
-@Table(name="movies")
-@NamedQueries({
-    @NamedQuery(
-            name="movie-findByTitle",
-            query="select mv from Movie mv where mv.title = :title"
-    )
-})
 @XmlRootElement
 public class Movie implements java.io.Serializable {
     private static final long serialVersionUID = 1L;
 
-	private Long id;
 	private String title;
 	private Integer year;
 	private String language;
-	private Author author;
-	private Category category;
-
-	@Id
-    public Long getId() {
-        return id;
-    }
+	private String author;
+	private String category;
 
     public String getTitle() {
         return title;
@@ -46,21 +24,13 @@ public class Movie implements java.io.Serializable {
         return language;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "COD_AUTHOR")
-    public Author getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="COD_CATEGORY")
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
-
-    public void setId(Long id) {
-		this.id = id;
-	}
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -74,11 +44,11 @@ public class Movie implements java.io.Serializable {
 		this.language = language;
 	}
 
-	public void setAuthor(Author author) {
+	public void setAuthor(String author) {
 		this.author = author;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(String category) {
 		this.category = category;
 	}
 
