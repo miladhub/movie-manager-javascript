@@ -9,7 +9,6 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>movie-manager-ejb</module>
         <module>movie-manager-web</module>
     </modules>
 

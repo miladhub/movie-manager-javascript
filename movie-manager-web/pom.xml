@@ -100,12 +100,6 @@
     </build>
 
     <dependencies>
-		<dependency>
-			<groupId>org.sample.movie-manager</groupId>
-			<artifactId>movie-manager-ejb</artifactId>
-            <version>${project.version}</version>
-			<type>ejb</type>
-		</dependency>
         <dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>
