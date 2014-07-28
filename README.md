@@ -6,9 +6,9 @@ The front-end uses Backbone.js, Websockets, REST and Jasmine for testing.
 
 The WAR has been successfully deployed on JBoss WildFly. It doesn't need any specific configuration, just drop the WAR on the `standalone/deployments` folder and access the web app at either
 
-  - http://localhost:8080/movie/backbone.html (Backbone.js with Websockets)
-  - http://localhost:8080/movie/rest.html (Backbone.js with REST)
-  - http://localhost:8080/movie/websocket.html (standard JS with Websockets)
+  - [http://localhost:8080/movie/backbone.html](http://localhost:8080/movie/backbone.html) (Backbone.js with Websockets)
+  - [http://localhost:8080/movie/rest.html](http://localhost:8080/movie/rest.html) (Backbone.js with REST)
+  - [http://localhost:8080/movie/websocket.html](http://localhost:8080/movie/websocket.html) (standard JS with Websockets)
 
 Installation
 ------------
