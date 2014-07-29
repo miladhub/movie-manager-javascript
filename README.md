@@ -25,6 +25,6 @@ $ mvn clean install
 [INFO] Finished at: 2014-07-28T18:20:59+02:00
 [INFO] Final Memory: 19M/491M
 [INFO] ------------------------------------------------------------------------
-$ cp target/movie.war ~/wildfly-8.1.0.Final
+$ cp target/movie.war ~/wildfly-8.1.0.Final/standalone/deployments
 $ ~/wildfly-8.1.0.Final/bin/standalone.sh
 ```
