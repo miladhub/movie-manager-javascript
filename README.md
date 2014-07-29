@@ -2,9 +2,9 @@ Movie manager
 =============
 
 This is a demo project illustrating the use of a Javascript front-end and a Java back-end (JEE).
-The front-end uses Backbone.js, Websockets, REST and Jasmine for testing.
+The front-end uses [Backbone.js](http://backbonejs.org/), [Websockets](https://www.websocket.org/), [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) and [Jasmine](http://jasmine.github.io/) for unit testing.
 
-The WAR has been successfully deployed on JBoss WildFly. It doesn't need any specific configuration, just drop the WAR on the `standalone/deployments` folder and access the web app at either
+The WAR has been successfully deployed on [JBoss WildFly](http://wildfly.org/downloads/). It doesn't need any specific configuration, just drop the WAR on the `standalone/deployments` folder and access the web app at either
 
   - [http://localhost:8080/movie/backbone.html](http://localhost:8080/movie/backbone.html) (Backbone.js with Websockets)
   - [http://localhost:8080/movie/rest.html](http://localhost:8080/movie/rest.html) (Backbone.js with REST)
