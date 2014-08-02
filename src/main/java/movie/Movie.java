@@ -1,5 +1,9 @@
 package movie;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -11,8 +15,9 @@ public class Movie implements java.io.Serializable {
 	private String language;
 	private String author;
 	private String category;
+	private @XmlElement List<Review> reviews = new ArrayList<>();
 
-    public String getTitle() {
+	public String getTitle() {
         return title;
     }
 

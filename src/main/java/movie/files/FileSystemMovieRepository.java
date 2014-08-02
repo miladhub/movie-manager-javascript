@@ -3,6 +3,8 @@ package movie.files;
 import java.io.File;
 import java.io.IOException;
 import java.io.StringReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
@@ -28,7 +30,7 @@ public class FileSystemMovieRepository implements LocalMovieRepository {
 	private void setUpHomeFolder() {
 	    moviesFolder = new File(System.getProperty("user.home"), ".movies");
 	}
-	
+
 	@Override
 	public Movie findByTitle(String title) {
 		movieEvent.fire(new MovieEvent(title));
@@ -43,7 +45,21 @@ public class FileSystemMovieRepository implements LocalMovieRepository {
         }
 	}
 
-    private Movie unmarshal(String contents) {
+    @Override
+	public List<Movie> findAll() {
+    	movieEvent.fire(new MovieEvent(null));
+    	List<Movie> movies = new ArrayList<Movie>();
+    	for (String movieFile : moviesFolder.list()) {
+			try {
+				movies.add(unmarshal(FileUtils.readFileToString(new File(moviesFolder, movieFile))));
+			} catch (IOException e) {
+				throw new IllegalStateException(e);
+			}
+		}
+		return movies;
+	}
+
+	private Movie unmarshal(String contents) {
         JAXBContext context;
         try {
             context = JAXBContext.newInstance(Movie.class);

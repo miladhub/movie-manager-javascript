@@ -1,8 +1,12 @@
 (function() {
 	var app = angular.module("movie", []);
-	app.controller("MovieController", function() {
-		this.movies = movies;
-	});
+	app.controller("MovieController", ['$http', function($http) {
+		var store = this;
+		store.movies = [];
+		$http.get("/movie/rest/movies").success(function(data) {
+			store.movies = data;
+		});
+	}]);
 
 	app.controller('TabController', function() {
 		this.tab = 1;
@@ -16,11 +20,18 @@
 		};
 	});
 
-	app.controller('ReviewController', function() {
-		this.review = {};
-		this.addReview = function(movie) {
-			movie.reviews.push(this.review);
-			this.review = {};
+	app.directive("reviewForm", function() {
+		return {
+			restrict: "E",
+			templateUrl: "review-form.html",
+			controller: function() {
+				this.review = {};
+				this.addReview = function(movie) {
+					movie.reviews.push(this.review);
+					this.review = {};
+				};
+			},
+			controllerAs: "reviewCtrl"
 		};
 	});
 
