@@ -6,9 +6,11 @@ The front-end uses [Backbone.js](http://backbonejs.org/), [Websockets](https://w
 
 The WAR has been successfully deployed on [JBoss WildFly](http://wildfly.org/downloads/). It doesn't need any specific configuration, just drop the WAR on the `standalone/deployments` folder and access the web app at either
 
-  - [http://localhost:8080/movie/backbone.html](http://localhost:8080/movie/backbone.html) (Backbone.js with Websockets)
-  - [http://localhost:8080/movie/rest.html](http://localhost:8080/movie/rest.html) (Backbone.js with REST)
-  - [http://localhost:8080/movie/websocket.html](http://localhost:8080/movie/websocket.html) (standard JS with Websockets)
+  - [http://localhost:8080/movie/backbone-ws.html](http://localhost:8080/movie/backbone-ws.html) (Backbone.js with Websockets)
+  - [http://localhost:8080/movie/backbone-rest.html](http://localhost:8080/movie/backbone-rest.html) (Backbone.js with Websockets)
+  - [http://localhost:8080/movie/angular.html](http://localhost:8080/movie/angular.html) (Angular.js with REST)
+  - [http://localhost:8080/movie/rest.html](http://localhost:8080/movie/rest.html) (jQuery with REST)
+  - [http://localhost:8080/movie/websocket.html](http://localhost:8080/movie/websocket.html) (jQuery with Websockets)
 
 Installation
 ------------
